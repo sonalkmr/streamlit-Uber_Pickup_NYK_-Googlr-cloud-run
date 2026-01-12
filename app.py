@@ -2,13 +2,23 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-st.title('Uber pickups in NYC')
+st.title("🚕 Uber Pickups in NYC")
+st.markdown(
+    """
+    This app visualizes **Uber pickup data in New York City**.
+    
+    - Load raw trip data  
+    - Analyze pickup patterns by hour  
+    - Visualize pickups on a map  
+    """
+)
+
 
 DATE_COLUMN = 'date/time'
 DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
             'streamlit-demo-data/uber-raw-data-sep14.csv.gz')
 
-@st.cache
+@st.cache_data
 def load_data(nrows):
     data = pd.read_csv(DATA_URL, nrows=nrows)
     lowercase = lambda x: str(x).lower()
@@ -16,8 +26,12 @@ def load_data(nrows):
     data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
     return data
 
+
+st.sidebar.header("Data Settings")
+nrows = st.sidebar.slider("Number of rows to load", 1000, 100000, 10000, step=1000)
+
 data_load_state = st.text('Loading data...')
-data = load_data(10000)
+data = load_data(nrows)
 data_load_state.text("Done! (using st.cache)")
 
 if st.checkbox('Show raw data'):
