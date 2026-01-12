@@ -1,11 +1,28 @@
-# Build and deploy
+# Streamlit Uber Pickup NYK 🚖
 
-Command to build the application. PLease remeber to change the project name and application name
-```
-gcloud builds submit --tag gcr.io/<ProjectName>/<AppName>  --project=<ProjectName>
-```
+A Streamlit web application deployed using Docker and Google Cloud Run.
+The app demonstrates containerization and cloud deployment best practices.
 
-Command to deploy the application
-```
-gcloud run deploy --image gcr.io/<ProjectName>/<AppName> --platform managed  --project=<ProjectName> --allow-unauthenticated
-```
+---
+
+## 🚀 Live Application
+Deployed on **Google Cloud Run**  
+👉 https://streamlit-uber-pickup-nyk--googlr-cloud-run-1012420664952.europe-west1.run.app
+
+---
+
+## 🧱 Tech Stack
+- Python 3.10
+- Streamlit
+- Docker
+- Google Cloud Run
+
+---
+
+## 📂 Project Structure
+streamlit-uber-pickup-nyk/
+│
+├── app.py # Streamlit application
+├── requirements.txt # Python dependencies
+├── Dockerfile # Docker build instructions
+├── README.md # Project documentation
